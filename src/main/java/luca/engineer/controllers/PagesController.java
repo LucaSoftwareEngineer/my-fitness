@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PagesController {
 
+	@GetMapping("/")
+	public String indexPage() {
+		return "login"; //redirect alla login
+	}
+	
 	@GetMapping("/login")
 	public String loginPage() {
 		return "login";

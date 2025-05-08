@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <title>MyFitness :: Login</title>
+    </head>
+    <body class="bg-[#f0efed]">
+        <div class="flex justify-center pt-[5%]">
+            <form class="w-[400px] bg-[#ededed] rounded-[4px] pb-[20px] shadow-xl">
+            
+                <div class="bg-white rounded-tl-[4px] rounded-tr-[4px] pb-[5px] pt-[5px]">
+                    <img th:src="@{/img/logo.PNG}" alt="myFitness Logo" class="w-[60px] ml-[38%] mt-[5px]" />
+                </div>
+                
+                <input type="text" placeholder="Inserisci username" class="ml-[5%] mt-[20px] w-[90%] bg-white text-[12px] p-[4px] rounded-[4px] shadow-xl" />
+                <input type="password" placeholder="Inserisci password" class="ml-[5%] mt-[20px] w-[90%] bg-white text-[12px] p-[4px] rounded-[4px] shadow-xl" />
+
+                <button type="submit" class="ml-[5%] border-[#110e5e] border-2 cursor-pointer text-[12px] bg-black hover:bg-[#f2f2f2] hover:border-[#f2f2f2] hover:text-black p-[4px] text-white mt-[20px] w-[90%] rounded-[4px] shadow-xl">
+                    Accedi
+                </button>
+                
+                <div class="ml-[5%] pt-[20px] text-[0.8rem] text-center">
+					Non hai ancora un account? <a class="text-[#0f87d1]" href="/register">Registrati ora</a>
+				</div>
+            </form>
+        </div>
+    </body>
+</html>
