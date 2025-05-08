@@ -3,7 +3,6 @@ package luca.engineer.controllers;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,8 +11,7 @@ import luca.engineer.dto.ParamRegisterUser;
 import luca.engineer.services.UserService;
 
 @RestController
-@CrossOrigin(origins="*")
-public class AuthController {
+public class RegisterController {
 	
 	@Autowired
 	UserService userService;
