@@ -14,7 +14,7 @@ import luca.engineer.services.UserService;
 @RestController
 @CrossOrigin(origins="*")
 public class AuthController {
-
+	
 	@Autowired
 	UserService userService;
 	
