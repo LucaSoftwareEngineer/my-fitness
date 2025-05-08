@@ -21,4 +21,9 @@ public class PagesController {
 		return "register";
 	}
 	
+	@GetMapping("/app/home")
+	public String home() {
+		return "home";
+	}
+	
 }

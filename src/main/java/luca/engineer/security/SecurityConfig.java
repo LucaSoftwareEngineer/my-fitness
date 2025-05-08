@@ -32,7 +32,21 @@ public class SecurityConfig {
 				req.requestMatchers(HttpMethod.POST,"/api/user/register").permitAll();
 				req.requestMatchers("/app/**").authenticated();
 				req.requestMatchers("/css/**", "/js/**", "/img/**", "/webjars/**").permitAll();
+			})
+			.formLogin(login -> {
+				login
+					.loginPage("/login")
+					.defaultSuccessUrl("/app/home",true)
+					.permitAll();
+			})
+			.logout(logout -> {
+				logout
+					.logoutUrl("/logout")
+					.invalidateHttpSession(true)
+					.deleteCookies("JSESSIONID")
+					.permitAll();
 			});
+		
 		
 		return http.build();
 	}
