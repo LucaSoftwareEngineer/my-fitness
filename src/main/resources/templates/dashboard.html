@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>MyFitness :: Dashboard</title>
+  </head>
+  <body class="bg-[#f0efed] p-[20px]">
+  	<div class="flex flex-wrap">
+  		<div onclick="goTo('/app/lezioni')" class="mb-[20px] shadow-xl cursor-pointer bg-[#d936b0] hover:bg-[#02eb35] text-center text-white w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-tuition-100.png}" alt="icons8-tuition-100" /></p>
+      		<p class="mt-[10px] font-bold"><b>LEZIONI</b></p>
+    	</div>
+    	<div onclick="goTo('/app/attività')" class="mb-[20px] shadow-xl cursor-pointer bg-[#1d82db] hover:bg-[#02eb35] text-center text-white w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-fitness-96.png}" alt="icons8-fitness-96" /></p>
+      		<p class="mt-[10px] font-bold"><b>ATTIVITÀ</b></p>
+    	</div>
+    	<div onclick="goTo('/app/profilo')" class="mb-[20px] shadow-xl cursor-pointer bg-[#fab60a] hover:bg-[#02eb35] text-center text-white w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-user-96.png}" alt="icons8-user-96" /></p>
+      		<p class="mt-[10px] font-bold"><b>PROFILO</b></p>
+    	</div>
+    	<div onclick="logout()" class="mb-[20px] shadow-xl cursor-pointer bg-white text-center hover:bg-[#f5e1e2] text-[#0F518C] w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-logout-96.png}" alt="icons8-logout-96" /></p>
+      		<p class="mt-[10px] font-bold"><b>LOGOUT</b></p>
+    	</div>
+  	</div>
+  	
+  	<!-- JavaScript -->
+  	<script th:src="@{/js/logout.js}"></script>
+  	<script th:src="@{/js/dashboard.js}"></script>
+  	
+  </body>
+</html>

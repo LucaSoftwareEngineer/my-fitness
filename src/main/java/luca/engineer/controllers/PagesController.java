@@ -26,9 +26,24 @@ public class PagesController {
 		return "register-success";
 	}
 	
-	@GetMapping("/app/home")
-	public String home() {
-		return "home";
+	@GetMapping("/app/")
+	public String dashboardPage() {
+		return "dashboard";
+	}
+	
+	@GetMapping("/app/lezioni")
+	public String lezioniPage() {
+		return "lezioni";
+	}
+	
+	@GetMapping("/app/attività")
+	public String attivitàPage() {
+		return "attività";
+	}
+	
+	@GetMapping("/app/profilo")
+	public String profiloPage() {
+		return "profilo";
 	}
 	
 }
