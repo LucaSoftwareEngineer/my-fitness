@@ -14,5 +14,6 @@ public class ParamRegisterUser {
 	private String email;
 	private String password;
 	private Date dataNascita;
+	private String passwordConfirm;
 	
 }

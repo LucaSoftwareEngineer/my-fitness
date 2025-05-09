@@ -22,7 +22,7 @@
                 </button>
                 
                 <div class="ml-[5%] pt-[20px] text-[0.8rem] text-center">
-                	<p th:if="${param.error}">Username o password errati</p>
+                	<p class="text-red-500 mb-[10px]" th:if="${param.error}">Username o password errati</p>
                 	<p>Non hai ancora un account? <a class="text-[#0f87d1]" href="/register">Registrati ora</a></p>
 				</div>
             </form>

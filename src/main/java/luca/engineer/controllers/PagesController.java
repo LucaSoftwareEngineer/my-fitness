@@ -21,6 +21,11 @@ public class PagesController {
 		return "register";
 	}
 	
+	@GetMapping("/register/success")
+	public String registerSuccessPage() {
+		return "register-success";
+	}
+	
 	@GetMapping("/app/home")
 	public String home() {
 		return "home";

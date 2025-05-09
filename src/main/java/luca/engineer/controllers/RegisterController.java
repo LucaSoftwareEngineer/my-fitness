@@ -1,26 +1,31 @@
 package luca.engineer.controllers;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import luca.engineer.dto.ParamRegisterUser;
 import luca.engineer.services.UserService;
 
-@RestController
+
+@Controller
 public class RegisterController {
 	
 	@Autowired
 	UserService userService;
 	
 	@PostMapping("/api/user/register")
-	public HashMap<String, Boolean> registerUser(@RequestBody ParamRegisterUser json) throws Exception {
-		HashMap<String, Boolean> response = new HashMap<>();
-		response.put("response",userService.registerUser(json));
-		return response;
+	public String registerUser(@ModelAttribute ParamRegisterUser json, Model model) {
+		try {
+			userService.registerUser(json);
+			return "redirect:/register/success";
+		} catch (Exception e) {
+			model.addAttribute("errore", "l'email che stai tentando di utilizzare è associata ad un utente esistente");
+			return "register";
+		}
 	}
 	
 }

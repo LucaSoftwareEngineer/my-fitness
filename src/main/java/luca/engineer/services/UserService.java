@@ -23,8 +23,12 @@ public class UserService implements UserDetailsService {
 	PasswordEncoder passwordEncoder;
 	
 	public boolean registerUser(ParamRegisterUser json) throws Exception {
-		User user = new User(null, json.getNome(), json.getCognome(), json.getEmail(), passwordEncoder.encode(json.getPassword()), json.getDataNascita());
-		userRepository.save(user);
+		if (json.getPassword().equals(json.getPasswordConfirm())) {
+			User user = new User(null, json.getNome(), json.getCognome(), json.getEmail(), passwordEncoder.encode(json.getPassword()), json.getDataNascita());
+			userRepository.save(user);
+		} else {
+			new Exception("le password non coincidono");
+		}
 		return true;
 	}
 
