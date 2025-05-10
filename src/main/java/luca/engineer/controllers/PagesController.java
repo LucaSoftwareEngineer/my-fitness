@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpSession;
+
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
@@ -41,30 +43,29 @@ public class PagesController {
 	}
 	
 	@GetMapping("/app/")
-	public String dashboardPage(Model model, @AuthenticationPrincipal UserDetails currentUser) throws Exception {
+	public String dashboardPage(HttpSession session, Model model, @AuthenticationPrincipal UserDetails currentUser) throws Exception {
 		User user = (User) userRepository.findByEmail(currentUser.getUsername()).orElseThrow(() -> new Exception());
-        model.addAttribute("idUser", user.getIdUser());
+        session.setAttribute("idUser", user.getIdUser());
 		return "dashboard";
 	}
 	
 	@GetMapping("/app/lezioni")
-	public String lezioniPage(Model model, @RequestParam String id) {
-		String idUser = new String(Base64.getDecoder().decode(id), StandardCharsets.UTF_8);
-		model.addAttribute("idUser", idUser);
+	public String lezioniPage(HttpSession session, Model model) throws Exception {
+		Long idUser = new Long((long) session.getAttribute("idUser"));
+		User user = userRepository.findById(idUser).orElseThrow(() -> new Exception());
+		model.addAttribute("lezioni", user.getLezioni());
 		return "lezioni";
 	}
 	
 	@GetMapping("/app/lezioni/aggiungi")
-	public String lezioniAggiungiPage(Model model, @RequestParam String id) {
-		String idUser = new String(Base64.getDecoder().decode(id), StandardCharsets.UTF_8);
+	public String lezioniAggiungiPage(HttpSession session, Model model) {
+		Long idUser = new Long((long) session.getAttribute("idUser"));
 		model.addAttribute("idUser", idUser);
 		return "lezioni-aggiungi";
 	}
 	
 	@GetMapping("app/lezioni/aggiungi/success")
-	public String lezioneAggiungiSuccessPage(Model model, @RequestParam String id) {
-		String idUser = new String(Base64.getDecoder().decode(id), StandardCharsets.UTF_8);
-		model.addAttribute("idUser", idUser);
+	public String lezioneAggiungiSuccessPage(Model model) {
 		return "lezione-aggiungi-success";
 	}
 	

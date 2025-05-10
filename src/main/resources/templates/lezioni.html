@@ -17,12 +17,14 @@
       		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-logout-96.png}" alt="icons8-logout-96" /></p>
       		<p class="mt-[10px] font-bold"><b>TORNA ALLA DASHBOARD</b></p>
     	</div>
+    	
+    	<div th:each="lezione:${lezioni}" class="mb-[20px] shadow-xl cursor-pointer bg-[#f7f0f7] hover:bg-[#ffff7a] text-[#129350] text-center w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-lesson-96.png}" alt="icons8-lesson-96" /></p>
+    		<p class="mt-[10px] font-bold" th:text="${lezione.titolo}"></p>
+    	</div>
   	</div>
   	
-  	<input type="hidden" th:value="${idUser}" id="idUser" />
-  	
   	<!-- JavaScript -->
-  	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   	<script th:src="@{/js/dashboard.js}"></script>
   	
   </body>
