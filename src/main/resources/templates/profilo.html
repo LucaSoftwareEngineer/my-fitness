@@ -1,1 +1,41 @@
-ProfiloPage Work!
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>MyFitness :: Profilo</title>
+  </head>
+  <body class="bg-[#f0efed] p-[20px] flex flex-row">
+  	
+  	<div class="bg-white shadow-xl p-[20px] w-[400px] mr-[20px]">
+  		<table class="w-[90%]">
+  			<tr>
+  				<td class="font-bold p-[10px]">Nome</td>
+  				<td class="p-[10px]" th:text="${nome}"></td>
+  			</tr>
+  			<tr>
+  				<td class="font-bold p-[10px]">Cognome</td>
+  				<td class="p-[10px]" th:text="${cognome}"></td>
+  			</tr>
+  			<tr>
+  				<td class="font-bold p-[10px]">Data di nascita</td>
+  				<td class="p-[10px]" th:text="dataNascita"></td>
+  			</tr>
+  			<tr>
+  				<td class="font-bold p-[10px]">Email</td>
+  				<td class="p-[10px]" th:text="email"></td>
+  			</tr>
+  		</table>
+  	</div>
+  	
+  	<div onclick="goTo('/app/')" class="mb-[20px] shadow-xl cursor-pointer bg-white text-center hover:bg-[#f5e1e2] text-[#0F518C] w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+ 		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-logout-96.png}" alt="icons8-logout-96" /></p>
+ 		<p class="mt-[10px] font-bold"><b>TORNA ALLA DASHBOARD</b></p>
+	</div>
+  	
+  	<!-- JavaScript -->
+  	<script th:src="@{/js/dashboard.js}"></script>
+  	
+  </body>
+</html>

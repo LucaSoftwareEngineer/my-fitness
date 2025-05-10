@@ -126,10 +126,17 @@ public class PagesController {
 		return "attività-aggiungi-success";
 	}
 	
-	/*************************** END ATTIVITA' ************************************************/
+	/*************************** END ATTIVITA' 
+	 * @throws Exception ************************************************/
 	
 	@GetMapping("/app/profilo")
-	public String profiloPage() {
+	public String profiloPage(HttpSession session, Model model) throws Exception {
+		Long idUser = new Long((Long)session.getAttribute("idUser"));
+		User user = userRepository.findById(idUser).orElseThrow(() -> new Exception());
+		model.addAttribute("nome", user.getNome());
+		model.addAttribute("cognome", user.getCognome());
+		model.addAttribute("email", user.getEmail());
+		model.addAttribute("dataNascita", user.getDataNascita());
 		return "profilo";
 	}
 	
