@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>MyFitness :: Attività</title>
+  </head>
+  <body class="bg-[#f0efed] p-[20px]">
+  	
+  	<div class="bg-white shadow-xl p-[20px]">
+  		<h1 class="font-bold" th:text="${esercizio}"></h1>
+  		<p onclick="goTo('../../app/attivita')" class="border-[#110e5e] border-2 cursor-pointer text-[12px] bg-black hover:bg-[#f2f2f2] hover:border-[#f2f2f2] hover:text-black p-[4px] text-white mt-[10px] mb-[10px] w-[35px] rounded-[4px] shadow-xl">ESCI</p>
+  		
+  		<table class="w-[200px] mt-[50px] mb-[25px]">
+			<tr>
+				<td><div class="mb-[10px]"><label class="text-[0.8rem]">N. di serie: </label></div></td>
+				<td class="border-[1px] border-gray pl-[20px]"><div class="mb-[10px]"><label th:text="${serie}" class="text-[0.8rem]"></label></div></td>
+			</tr>
+			<tr>
+				<td><div class="mt-[20px] mb-[10px]"><label class="text-[0.8rem]">N. di ripetizioni: </label></div></td>
+				<td class="border-[1px] border-gray pl-[20px]"><div class="mt-[20px] mb-[10px]"><label th:text="${ripetizioni}" class="text-[0.8rem]"></label></div></td>
+			</tr>
+		</table>
+  		
+  		
+  	</div>
+  	
+  	<!-- JavaScript -->
+  	<script th:src="@{/js/dashboard.js}"></script>
+  	
+  </body>
+</html>

@@ -6,23 +6,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import luca.engineer.dto.ParamAggiungiLezione;
-import luca.engineer.services.LezioneService;
+import luca.engineer.dto.ParamAggiungiAttività;
+import luca.engineer.services.AttivitàService;
 
 @Controller
-public class LezioneController {
+public class AttivitàController {
 
 	@Autowired
-	LezioneService lezioneService;
+	AttivitàService attivitàService;
 	
-	@PostMapping("/api/lezione/aggiungi")
-	public String aggiungiLezione(@ModelAttribute ParamAggiungiLezione json, Model model) {
+	@PostMapping("/api/attivita/aggiungi")
+	public String aggiungiLezione(@ModelAttribute ParamAggiungiAttività json, Model model) {
 		try {
-			lezioneService.aggiungiLezione(json);
-			return "redirect:../../app/lezioni/aggiungi/success";
+			attivitàService.aggiungiAttività(json);
+			return "redirect:../../app/attivita/aggiungi/success";
 		} catch (Exception e) {
 			model.addAttribute("errore", "Attenzione! si è verificato un errore, effettua il logout e riprova");
-			return "redirect:../../app/lezioni/aggiungi";
+			return "redirect:../../app/attivita/aggiungi";
 		}
 	}
 	

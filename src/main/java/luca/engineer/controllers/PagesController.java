@@ -16,8 +16,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
 
+import luca.engineer.models.Attività;
 import luca.engineer.models.Lezione;
 import luca.engineer.models.User;
+import luca.engineer.repositories.AttivitàRepository;
 import luca.engineer.repositories.LezioneRepository;
 import luca.engineer.repositories.UserRepository;
 
@@ -29,6 +31,9 @@ public class PagesController {
 	
 	@Autowired
 	LezioneRepository lezioneRepository;
+	
+	@Autowired
+	AttivitàRepository attivitàRepository;
 	
 	@GetMapping("/")
 	public String indexPage() {
@@ -56,6 +61,8 @@ public class PagesController {
         session.setAttribute("idUser", user.getIdUser());
 		return "dashboard";
 	}
+	
+	/*************************** BEGIN LEZIONI ************************************************/
 	
 	@GetMapping("/app/lezioni")
 	public String lezioniPage(HttpSession session, Model model) throws Exception {
@@ -86,10 +93,40 @@ public class PagesController {
 		return "lezione-aggiungi-success";
 	}
 	
-	@GetMapping("/app/attività")
-	public String attivitàPage() {
+	/*************************** END LEZIONI ************************************************/
+	
+	/*************************** BEGIN ATTIVITA' ************************************************/
+	
+	@GetMapping("/app/attivita")
+	public String attivitàPage(HttpSession session, Model model) throws Exception {
+		Long idUser = new Long((long) session.getAttribute("idUser"));
+		User user = userRepository.findById(idUser).orElseThrow(() -> new Exception());
+		model.addAttribute("attività", user.getAttività());
 		return "attività";
 	}
+	
+	@GetMapping("/app/attivita/{idAttività}")
+	public String attivitàOpenPage(@PathVariable Long idAttività, Model model) throws Exception {
+		Attività attività = attivitàRepository.findById(idAttività).orElseThrow(() -> new Exception());
+		model.addAttribute("esercizio", attività.getEsercizio());
+		model.addAttribute("serie", attività.getSerie());
+		model.addAttribute("ripetizioni", attività.getRipetizioni());
+		return "attività-open";
+	}
+	
+	@GetMapping("/app/attivita/aggiungi")
+	public String attivitàAggiungiPage(HttpSession session, Model model) {
+		Long idUser = new Long((long) session.getAttribute("idUser"));
+		model.addAttribute("idUser", idUser);
+		return "attività-aggiungi";
+	}
+	
+	@GetMapping("app/attivita/aggiungi/success")
+	public String attivitàAggiungiSuccessPage(Model model) {
+		return "attività-aggiungi-success";
+	}
+	
+	/*************************** END ATTIVITA' ************************************************/
 	
 	@GetMapping("/app/profilo")
 	public String profiloPage() {

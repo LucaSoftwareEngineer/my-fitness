@@ -1,1 +1,33 @@
-AttivitàPage work aa
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>MyFitness :: Attività</title>
+  </head>
+  <body class="bg-[#f0efed] p-[20px]">
+  	
+  	<div class="flex flex-wrap">
+  		<div onclick="goTo('/app/attivita/aggiungi')" class="mb-[20px] shadow-xl cursor-pointer bg-[#02eb35] hover:bg-[#ffff7a] hover:text-[#129350] text-center text-white w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-add-96.png}" alt="icons8-add-96" /></p>
+    		<p class="mt-[10px] font-bold"><b>AGGIUNGI ATTIVITÀ</b></p>
+    	</div>
+    	<div onclick="goTo('/app/')" class="mb-[20px] shadow-xl cursor-pointer bg-white text-center hover:bg-[#f5e1e2] text-[#0F518C] w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-logout-96.png}" alt="icons8-logout-96" /></p>
+      		<p class="mt-[10px] font-bold"><b>TORNA ALLA DASHBOARD</b></p>
+    	</div>
+    	
+    	<div th:each="att:${attività}" class="mb-[20px] shadow-xl cursor-pointer bg-[#f7f0f7] hover:bg-[#ffff7a] text-[#129350] text-center w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+			<a th:href="@{/app/attivita/{id}(id=${att.idAttività})}">
+	      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-fitness2-96.png}" alt="icons8-fitness2-96" /></p>
+	    		<p class="mt-[10px] font-bold" th:text="${att.esercizio}"></p>
+    		</a>
+    	</div>
+  	</div>
+  	
+  	<!-- JavaScript -->
+  	<script th:src="@{/js/dashboard.js}"></script>
+  	
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>MyFitness :: Attività</title>
+  </head>
+  <body class="bg-[#f0efed] p-[20px]">
+  	
+  	<div class="flex flex-wrap">
+  		<form 
+  		method="post" th:action="@{/api/attivita/aggiungi}" class="md:mr-[20px] w-[100%] md:w-[50%] pl-[10px] pr-[10px] pt-[15px] pb-[15px] bg-white rounded-[4px]">
+  			<input class="border-gray-100 border-[1px] text-[0.8rem] p-[5px] w-[100%] bg-white rounded-[4px]" type="text" name="esercizio" placeholder="inserisci esercizio" />
+  			<div class="mt-[10px] mb-[10px] flex flex-wrap">
+				<table class="w-[60%]">
+					<tr>
+						<td><div class="mb-[20px]"><label class="text-[0.8rem]">N. di serie </label></div></td>
+						<td><input class="mb-[20px] text-[0.8rem] bg-white rounded-[4px] rounded-[4px] border-gray-100 border-[1px] text-[0.8rem] p-[5px]" type="number" name="serie" /></td>
+					</tr>
+					<tr>
+						<td><div class="mb-[20px]"><label class="text-[0.8rem]">N. di ripetizioni</label></div></td>
+						<td><input class="mb-[20px] text-[0.8rem] bg-white rounded-[4px] rounded-[4px] border-gray-100 border-[1px] text-[0.8rem] p-[5px]" type="number" name="ripetizioni" /></td>
+					</tr>
+				</table>
+  			</div>
+  			<input type="hidden" name="idUser" id="idUser" th:value="${idUser}" />
+  			<button type="submit" class="cursor-pointer font-bold text-[0.8rem] rounded-[4px] mt-[15px] ml-[1px] bg-green-500 hover:bg-yellow-300 hover:text-black text-white p-[5px]">Aggiungi attività</button>
+  		</form>
+  		<div onclick="goTo('/app/attivita')" class="mb-[20px] shadow-xl cursor-pointer bg-white text-center hover:bg-[#f5e1e2] text-[#0F518C] w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-logout-96.png}" alt="icons8-logout-96" /></p>
+      		<p class="mt-[10px] font-bold"><b>TORNA ALLE ATTIVITÀ</b></p>
+    	</div>
+  	</div>
+  	
+  	<!-- JavaScript -->
+  	<script th:src="@{/js/dashboard.js}"></script>
+  	
+  </body>
+</html>

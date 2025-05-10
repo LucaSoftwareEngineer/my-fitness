@@ -24,7 +24,7 @@ public class UserService implements UserDetailsService {
 	
 	public boolean registerUser(ParamRegisterUser json) throws Exception {
 		if (json.getPassword().equals(json.getPasswordConfirm())) {
-			User user = new User(null, json.getNome(), json.getCognome(), json.getEmail(), passwordEncoder.encode(json.getPassword()), json.getDataNascita(), null);
+			User user = new User(null, json.getNome(), json.getCognome(), json.getEmail(), passwordEncoder.encode(json.getPassword()), json.getDataNascita(), null, null);
 			userRepository.save(user);
 		} else {
 			new Exception("le password non coincidono");
