@@ -20,7 +20,7 @@ public class Lezione {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idLesson;
+	public Long idLesson;
 	private String titolo;
 	private String descrizione;
 	private String url;

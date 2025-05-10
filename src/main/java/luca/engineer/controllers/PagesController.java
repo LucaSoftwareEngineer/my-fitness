@@ -6,14 +6,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 
 import jakarta.servlet.http.HttpSession;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Base64;
 
+import luca.engineer.models.Lezione;
 import luca.engineer.models.User;
+import luca.engineer.repositories.LezioneRepository;
 import luca.engineer.repositories.UserRepository;
 
 @Controller
@@ -21,6 +26,9 @@ public class PagesController {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	LezioneRepository lezioneRepository;
 	
 	@GetMapping("/")
 	public String indexPage() {
@@ -55,6 +63,15 @@ public class PagesController {
 		User user = userRepository.findById(idUser).orElseThrow(() -> new Exception());
 		model.addAttribute("lezioni", user.getLezioni());
 		return "lezioni";
+	}
+	
+	@GetMapping("/app/lezioni/{idLezione}")
+	public String lezioneOpenPage(@PathVariable Long idLezione, Model model) throws Exception {
+		Lezione lezione = lezioneRepository.findById(idLezione).orElseThrow(() -> new Exception());
+		model.addAttribute("titolo", lezione.getTitolo());
+		model.addAttribute("descrizione", lezione.getDescrizione());
+		model.addAttribute("url", lezione.getUrl());
+		return "lezione-open";
 	}
 	
 	@GetMapping("/app/lezioni/aggiungi")

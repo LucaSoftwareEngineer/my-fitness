@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,8 +19,10 @@
     	</div>
     	
     	<div th:each="lezione:${lezioni}" class="mb-[20px] shadow-xl cursor-pointer bg-[#f7f0f7] hover:bg-[#ffff7a] text-[#129350] text-center w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
-      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-lesson-96.png}" alt="icons8-lesson-96" /></p>
-    		<p class="mt-[10px] font-bold" th:text="${lezione.titolo}"></p>
+			<a th:href="@{/app/lezioni/{id}(id=${lezione.idLesson})}">
+	      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-lesson-96.png}" alt="icons8-lesson-96" /></p>
+	    		<p class="mt-[10px] font-bold" th:text="${lezione.titolo}"></p>
+    		</a>
     	</div>
   	</div>
   	
