@@ -1,3 +1,4 @@
 function goTo(url) {
-	location.href = url;
+	var idUser = btoa($("#idUser").val());
+	location.href = url + "?id=" + idUser;
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>MyFitness :: Lezioni</title>
+  </head>
+  <body class="bg-[#f0efed] p-[20px]">
+  	
+  	<div class="flex flex-wrap">
+  		<form 
+  		method="post" th:action="@{/api/lezione/aggiungi}" class="md:mr-[20px] w-[100%] md:w-[50%] pl-[10px] pr-[10px] pt-[15px] pb-[15px] bg-white rounded-[4px]">
+  			<input class="border-gray-100 border-[1px] text-[0.8rem] p-[5px] w-[100%] bg-white rounded-[4px]" type="text" name="titolo" placeholder="inserisci titolo" />
+  			<textarea class="border-gray-100 border-[1px] text-[0.8rem] p-[5px] mt-[10px] w-[100%] bg-white rounded-[4px]" name="descrizione" placeholder="inserisci descrizione" ></textarea>
+  			<input class="border-gray-100 border-[1px] text-[0.8rem] p-[5px] mt-[10px] w-[100%] bg-white rounded-[4px]" type="text" name="url" placeholder="inserisci url" />
+  			<input type="hidden" name="idUser" id="idUser" th:value="${idUser}" />
+  			<button type="submit" class="cursor-pointer font-bold text-[0.8rem] rounded-[4px] mt-[15px] ml-[1px] bg-green-500 hover:bg-yellow-300 hover:text-black text-white p-[5px]">Aggiungi lezione</button>
+  		</form>
+  		<div onclick="goTo('/app/lezioni')" class="mb-[20px] shadow-xl cursor-pointer bg-white text-center hover:bg-[#f5e1e2] text-[#0F518C] w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+      		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-logout-96.png}" alt="icons8-logout-96" /></p>
+      		<p class="mt-[10px] font-bold"><b>TORNA ALLE LEZIONI</b></p>
+    	</div>
+  	</div>
+  	
+  	<!-- JavaScript -->
+  	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  	<script th:src="@{/js/dashboard.js}"></script>
+  	
+  </body>
+</html>

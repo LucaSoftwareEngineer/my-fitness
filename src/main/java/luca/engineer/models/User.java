@@ -34,6 +34,6 @@ public class User {
 	private Date dataNascita;
 	
 	@OneToMany
-	private List<Lezione> lezioni;
+	public List<Lezione> lezioni;
 	
 }
