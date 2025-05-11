@@ -111,6 +111,7 @@ public class PagesController {
 		model.addAttribute("esercizio", attività.getEsercizio());
 		model.addAttribute("serie", attività.getSerie());
 		model.addAttribute("ripetizioni", attività.getRipetizioni());
+		model.addAttribute("idAttivita", idAttività);
 		return "attività-open";
 	}
 	
@@ -126,8 +127,12 @@ public class PagesController {
 		return "attività-aggiungi-success";
 	}
 	
-	/*************************** END ATTIVITA' 
-	 * @throws Exception ************************************************/
+	@GetMapping("app/attivita/rimuovi/success")
+	public String attivitàRimuoviSuccessPage(Model model) {
+		return "attività-rimuovi-success";
+	}
+	
+	/*************************** END ATTIVITA' ************************************************/
 	
 	@GetMapping("/app/profilo")
 	public String profiloPage(HttpSession session, Model model) throws Exception {

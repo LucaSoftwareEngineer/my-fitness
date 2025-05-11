@@ -32,6 +32,7 @@ public class SecurityConfig {
 				req.requestMatchers("/register/success").permitAll();
 				req.requestMatchers(HttpMethod.POST,"/api/user/register").permitAll();
 				req.requestMatchers(HttpMethod.POST,"/api/lezione/aggiungi").permitAll();
+				req.requestMatchers(HttpMethod.DELETE,"/api/attivita/elimina").permitAll();
 				req.requestMatchers("/app/**").authenticated();
 				req.requestMatchers("/api/**").permitAll();
 				req.requestMatchers("/css/**", "/js/**", "/img/**", "/webjars/**").permitAll();

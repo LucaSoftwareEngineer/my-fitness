@@ -10,7 +10,15 @@
   	
   	<div class="bg-white shadow-xl p-[20px] w-[400px] mr-[20px]">
   		<h1 class="font-bold" th:text="${esercizio}"></h1>
-  		<p onclick="goTo('../../app/attivita')" class="border-[#110e5e] border-2 cursor-pointer text-[12px] bg-black hover:bg-[#f2f2f2] hover:border-[#f2f2f2] hover:text-black p-[4px] text-white mt-[10px] mb-[10px] w-[35px] rounded-[4px] shadow-xl">ESCI</p>
+  		
+  		<div class="flex flex-wrap">
+  			<p onclick="goTo('../../app/attivita')" class="mr-[20px] border-[#110e5e] border-2 cursor-pointer text-[12px] bg-black hover:bg-[#f2f2f2] hover:border-[#f2f2f2] hover:text-black p-[4px] text-white mt-[10px] mb-[10px] w-[35px] rounded-[4px] shadow-xl">ESCI</p>
+			<p id="rimuoviButton" class="border-red-500 border-2 cursor-pointer text-[12px] bg-red-500 hover:bg-[#f2f2f2] hover:border-[#f2f2f2] hover:text-black p-[4px] text-white mt-[10px] mb-[10px] w-[61px] rounded-[4px] shadow-xl">RIMUOVI</p>
+  		</div>
+  		
+  		<div id="messaggio"></div>
+  		
+  		<input type="hidden" th:value="${idAttivita}" id="idAttivita" />
 		
   		<table class="w-[90%]">
   			<tr>
@@ -28,9 +36,12 @@
  		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-logout-96.png}" alt="icons8-logout-96" /></p>
  		<p class="mt-[10px] font-bold"><b>TORNA ALLE ATTIVITA'</b></p>
 	</div>
+	
+	<input type="hidden" th:value="${idAttivita}" id="id" />
   	
   	<!-- JavaScript -->
-  	<script th:src="@{/js/dashboard.js}"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.8.1/rxjs.umd.min.js"></script>
+  	<script th:src="@{/js/dashboard.js}" type="application/javascript"></script>
   	
   </body>
 </html>
