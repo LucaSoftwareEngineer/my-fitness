@@ -138,6 +138,21 @@ public class PagesController {
 		return "attività-rimuovi-success";
 	}
 	
+	@GetMapping("app/attivita/modifica/{id}")
+	public String attivitàModifica(@PathVariable Long id, Model model) throws Exception {
+		Attività tmp = attivitàRepository.findById(id).orElseThrow(() -> new Exception());
+		model.addAttribute("idAttività", id);
+		model.addAttribute("esercizio", tmp.getEsercizio());
+		model.addAttribute("serie", tmp.getSerie());
+		model.addAttribute("ripetizioni", tmp.getRipetizioni());
+		return "attività-modifica";
+	}
+	
+	@GetMapping("app/attivita/modifica/success")
+	public String attivitàModificaSuccess() throws Exception {
+		return "attività-modifica-success";
+	}
+	
 	/*************************** END ATTIVITA' ************************************************/
 	
 	@GetMapping("/app/profilo")

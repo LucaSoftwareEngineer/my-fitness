@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>MyFitness :: Attività</title>
+  </head>
+  <body class="bg-[#f0efed] p-[20px] flex flex-wrap">
+  	
+  	<div class="bg-white shadow-xl p-[20px] w-[400px] mr-[20px]">
+  		<h1 class="font-bold" th:text="${esercizio}"></h1>
+  		
+  		<div class="flex flex-wrap">
+  			<p onclick="goTo('../../../app/attivita/'+document.getElementById('id').value)" class="mr-[20px] border-[#110e5e] border-2 cursor-pointer text-[12px] bg-black hover:bg-[#f2f2f2] hover:border-[#f2f2f2] hover:text-black p-[4px] text-white mt-[10px] mb-[10px] w-[35px] rounded-[4px] shadow-xl">ESCI</p>
+  		</div>
+  		
+  		<form method="post" th:action="@{/api/attivita/modifica}">
+  			<input type="hidden" th:value="${id}" name="idAttivita" />
+  			<table class="w-[90%]">
+	  			<tr>
+	  				<td class="font-bold p-[10px]">Esercizio</td>
+	  				<td class="p-[10px]">
+	  					<input type="text" name="esercizio" th:value="${esercizio}" class="ml-[5%] mt-[20px] w-[90%] border-[1px] border-gray-500 bg-white text-[12px] p-[4px] rounded-[4px] shadow-xl" />
+	  				</td>
+	  			</tr>
+	  			<tr>
+	  				<td class="font-bold p-[10px]">N. Serie</td>
+	  				<td class="p-[10px]">
+	  					<input type="number" name="serie" th:value="${serie}" class="ml-[5%] mt-[20px] w-[90%] border-[1px] border-gray-500 bg-white text-[12px] p-[4px] rounded-[4px] shadow-xl" />
+	  				</td>
+	  			</tr>
+	  			<tr>
+	  				<td class="font-bold p-[10px]">N. Ripetizioni</td>
+	  				<td class="p-[10px]">
+	  					<input type="number" name="ripetizioni" th:value="${ripetizioni}" class="ml-[5%] mt-[20px] w-[90%] border-[1px] border-gray-500 bg-white text-[12px] p-[4px] rounded-[4px] shadow-xl" />
+	  				</td>
+	  			</tr>
+	  			<tr>
+	  				<td colspan="2">
+	  					<button type="submit" class="ml-[5%] border-[#110e5e] border-2 cursor-pointer text-[12px] bg-black hover:bg-[#f2f2f2] hover:border-[#f2f2f2] hover:text-black p-[4px] text-white mt-[20px] w-[90%] rounded-[4px] shadow-xl">
+	                    	Salva modifiche
+	                	</button>
+	  				</td>
+	  			</tr>
+	  		</table>
+  		</form>
+		
+  	</div>
+  	
+  	<div onclick="goTo('/app/attivita')" class="mb-[20px] shadow-xl cursor-pointer bg-white text-center hover:bg-[#f5e1e2] text-[#0F518C] w-[100%] md:w-[200px] h-[200px] rounded-[4px] p-[30px] mr-[20px]">
+ 		<p class="pl-[36%] md:pl-[20px]"><img th:src="@{/img/icons8-logout-96.png}" alt="icons8-logout-96" /></p>
+ 		<p class="mt-[10px] font-bold"><b>TORNA ALLE ATTIVITA'</b></p>
+	</div>
+	
+	<input type="hidden" th:value="${idAttivita}" id="id" />
+	<input type="hidden" value="attivita" id="tipo" />
+  	
+  	<!-- JavaScript -->
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.8.1/rxjs.umd.min.js"></script>
+  	<script th:src="@{/js/dashboard.js}" type="application/javascript"></script>
+  	
+  </body>
+</html>

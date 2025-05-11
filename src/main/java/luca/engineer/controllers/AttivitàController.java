@@ -6,10 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpSession;
 import luca.engineer.dto.ParamAggiungiAttività;
+import luca.engineer.dto.ParamModificaAttività;
 import luca.engineer.services.AttivitàService;
 
 @Controller
@@ -27,6 +30,12 @@ public class AttivitàController {
 			model.addAttribute("errore", "Attenzione! si è verificato un errore, effettua il logout e riprova");
 			return "redirect:../../app/attivita/aggiungi";
 		}
+	}
+	
+	@PostMapping("/api/attivita/modifica")
+	public String modificaAttività(@ModelAttribute ParamModificaAttività json) throws Exception {
+		attivitàService.modificaAttività(json);
+		return "redirect:../../app/attivita/modifica/success";
 	}
 	
 	@DeleteMapping("/api/attivita/elimina")

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import luca.engineer.dto.ParamAggiungiAttività;
+import luca.engineer.dto.ParamModificaAttività;
 import luca.engineer.models.Attività;
 import luca.engineer.models.User;
 import luca.engineer.repositories.AttivitàRepository;
@@ -28,6 +29,15 @@ public class AttivitàService {
 		User user = userRepository.findById(json.getIdUser()).orElseThrow(() -> new Exception());
 		user.getAttività().add(nuovaAttività);
 		userRepository.save(user);
+	}
+	
+	public void modificaAttività(ParamModificaAttività json) throws Exception {
+	    Attività attività = attivitàRepository.findById(json.getIdAttivita())
+	            .orElseThrow(() -> new Exception("Attività non trovata con ID: " + json.getIdAttivita()));
+	    attività.setEsercizio(json.getEsercizio());
+	    attività.setSerie(json.getSerie());
+	    attività.setRipetizioni(json.getRipetizioni());
+	    attivitàRepository.save(attività);
 	}
 	
 	public void eliminaAttività(Long idAttività, Long idUtente) throws Exception {
