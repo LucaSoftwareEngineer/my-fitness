@@ -78,6 +78,7 @@ public class PagesController {
 		model.addAttribute("titolo", lezione.getTitolo());
 		model.addAttribute("descrizione", lezione.getDescrizione());
 		model.addAttribute("url", lezione.getUrl());
+		model.addAttribute("id", lezione.getIdLesson());
 		return "lezione-open";
 	}
 	
@@ -91,6 +92,11 @@ public class PagesController {
 	@GetMapping("app/lezioni/aggiungi/success")
 	public String lezioneAggiungiSuccessPage(Model model) {
 		return "lezione-aggiungi-success";
+	}
+	
+	@GetMapping("app/lezione/rimuovi/success")
+	public String lezioneRimuoviSuccessPage(Model model) {
+		return "lezione-rimuovi-success";
 	}
 	
 	/*************************** END LEZIONI ************************************************/

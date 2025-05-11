@@ -11,13 +11,21 @@
   	<div class="bg-white shadow-xl p-[20px]">
   		<h1 class="font-bold" th:text="${titolo}"></h1>
   		<p th:text="${descrizione}"></p>
-  		<p onclick="goTo('../../app/lezioni')" class="border-[#110e5e] border-2 cursor-pointer text-[12px] bg-black hover:bg-[#f2f2f2] hover:border-[#f2f2f2] hover:text-black p-[4px] text-white mt-[10px] mb-[10px] w-[35px] rounded-[4px] shadow-xl">ESCI</p>
+  		<div class="flex flex-wrap">
+  			<p onclick="goTo('../../app/lezioni')" class="mr-[20px] border-[#110e5e] border-2 cursor-pointer text-[12px] bg-black hover:bg-[#f2f2f2] hover:border-[#f2f2f2] hover:text-black p-[4px] text-white mt-[10px] mb-[10px] w-[35px] rounded-[4px] shadow-xl">ESCI</p>
+  			<p id="rimuoviButton" class="border-red-500 border-2 cursor-pointer text-[12px] bg-red-500 hover:bg-[#f2f2f2] hover:border-[#f2f2f2] hover:text-black p-[4px] text-white mt-[10px] mb-[10px] w-[61px] rounded-[4px] shadow-xl">RIMUOVI</p>
+  			<p id="messaggio"></p>
+  		</div>
   		<iframe th:src="${url}" class="mt-[10px] w-[100%] h-[80vh]">
   		</iframe>
+  		
+  		<input type="hidden" th:value="${id}" id="id" />
+  		<input type="hidden" value="lezione" id="tipo" />
   		
   	</div>
   	
   	<!-- JavaScript -->
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.8.1/rxjs.umd.min.js"></script>
   	<script th:src="@{/js/dashboard.js}"></script>
   	
   </body>

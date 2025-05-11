@@ -4,6 +4,13 @@ const { switchMap, take, catchError } = rxjs.operators;
 document.addEventListener('DOMContentLoaded', () => {
     const rimuoviButton = document.getElementById('rimuoviButton');
     const messaggioDiv = document.getElementById('messaggio');
+	const tipo = document.getElementById('tipo').value;
+	
+	let attivita = true;
+	
+	if (tipo == 'lezione') {
+		attivita = false;
+	}
 
     if (rimuoviButton) {
         fromEvent(rimuoviButton, 'click').pipe(
@@ -16,18 +23,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     return of(null); // Interrompi l'observable
                 }
 
-                const apiUrlWithQuery = `../../api/attivita/elimina?id=${idDaRimuovere}`;
+				let apiUrlWithQuery;
+				if (attivita) {
+                	apiUrlWithQuery = `../../api/attivita/elimina?id=${idDaRimuovere}`;
+				} else {
+					apiUrlWithQuery = `../../api/lezione/elimina?id=${idDaRimuovere}`;
+				}
 
                 return from(fetch(apiUrlWithQuery, { method: 'DELETE' }).then(response => {
-                    window.location.href = "../../app/attivita/rimuovi/success";
+					if (attivita) {
+						window.location.href = "../../app/attivita/rimuovi/success";
+					} else {
+						window.location.href = "../../app/lezione/rimuovi/success";
+					}
                 }));
             }),
-            take(1) // Esegui la chiamata solo una volta per click
+            take(1)
         ).subscribe(response => {
             if (response !== null) {
                 console.log('Attività rimossa con successo:', response);
-                messaggioDiv.textContent = 'Attività rimossa con successo!';
-                // Qui puoi aggiungere eventuali altre azioni dopo la rimozione
+				if (attivita) {
+                	messaggioDiv.textContent = 'Attività rimossa con successo!';
+				} else {
+					messaggioDiv.textContent = 'Lezione rimossa con successo!';
+				}
             }
         });
     } else {
